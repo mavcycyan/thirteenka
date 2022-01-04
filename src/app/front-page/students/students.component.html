@@ -1,0 +1,55 @@
+<div class="students">
+    <div class="students-top">
+        <div class="students-top-col">
+            <button>Filters</button>
+        </div>
+        <div class="students-top-col">
+            <a [routerLink]="['add']">Add new student</a>
+        </div>
+    </div>
+    <div class="students-form">
+        <form action="">
+        </form>
+    </div>
+    <div class="students-list">
+        <div *ngFor="let stud of students; let i = index;">
+            <a [routerLink]="['edit', stud._id]" class="students-list-row is-stud">
+                <span class="students-list-num">{{ i+1 }}</span>
+                <span class="students-list-fio">{{stud.surname}} {{stud.firstName}}</span>
+                <span class="students-list-living_city">{{stud.citizenship}}</span>
+                <span class="students-list-chair">{{stud.chair}}</span>
+                <span class="students-list-fac">{{stud.faculty}}</span>
+                <span class="students-list-group">{{stud.group}}</span>
+                <span class="students-list-degree">{{stud.degree}}</span>
+                <span class="students-list-year_start">{{stud.yearStart}}</span>
+                <span class="students-list-year_end">{{stud.yearEnd}}</span>
+                <span class="students-list-budg">{{stud.budget}}</span>
+                <span class="students-list-scsh">{{stud.scholarship}}</span>
+            </a>
+            <div (click)="removeStudent(stud._id)">&times;</div>
+        </div>
+    </div>
+</div>
+
+<!--<ul>-->
+<!--<li>Фамилия</li>-->
+<!--<li>Имя</li>-->
+<!--<li>Отчество</li>-->
+<!--<li>Дата рождения</li>-->
+<!--<li>Гражданство</li>-->
+<!--<li>Родной город</li>-->
+<!--<li>Город проживания</li>-->
+<!--<li>Домашний адрес (улица, дом, квартира)</li>-->
+<!--<li>Законченное учебное заведение</li>-->
+<!--<li>Кафедра</li>-->
+<!--<li>Факультет</li>-->
+<!--<li>Группа</li>-->
+<!--<li>Форма обучения</li>-->
+<!--<li>Куратор</li>-->
+<!--<li>Квалификация</li>-->
+<!--<li>Год поступления</li>-->
+<!--<li>Год окончания</li>-->
+<!--<li>Статус (учится, академ отпуск, отчислен)</li>-->
+<!--<li>Бюджет (булевый)</li>-->
+<!--<li>Стиппендия (булевый)</li>-->
+<!--</ul>-->

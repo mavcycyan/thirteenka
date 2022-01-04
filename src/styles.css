@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~materialize-css/dist/css/materialize.min.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow-x: hidden; }
+
+
+main {
+    height: 100vh;
+    width: 100vw;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col {
+    padding: 0 15px;
+}

@@ -1,0 +1,25 @@
+<header class="header">
+</header>
+<main>
+    <div class="">
+        <div class="row">
+            <nav class="col side-menu">
+                <ul>
+                    <li>
+                        <a [routerLink]="['']" routerLinkActive="active">Home</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['students']" routerLinkActive="active">Students</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['chairs']" routerLinkActive="active">Chairs</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="col content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</main>
+

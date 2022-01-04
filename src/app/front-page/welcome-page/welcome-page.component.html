@@ -1,0 +1,18 @@
+<div class="comp_welc">
+    <div class="comp_welc-user">
+        {{ user | titlecase }}
+    </div>
+    <div class="comp_welc-time">
+        {{ today | date:'HH:mm:ss' }}
+    </div>
+    <div class="comp_welc-info">
+        <div class="comp_welc-info-bl">
+            <div class="comp_welc-info-bl-txt">Students registered last week</div>
+            <div class="comp_welc-info-bl-graph"></div>
+        </div>
+        <div class="comp_welc-info-bl">
+            <div class="comp_welc-info-bl-txt">Students registered last month</div>
+            <div class="comp_welc-info-bl-graph"></div>
+        </div>
+    </div>
+</div>

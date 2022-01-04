@@ -1,0 +1,9 @@
+.side-menu {
+    width: 300px;
+}
+
+.content {
+    flex: 1;
+    padding: 30px;
+    padding-right: 45px;
+}

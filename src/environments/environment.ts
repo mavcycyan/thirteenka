@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseToken: 'AIzaSyC5YrCvRvOA4cTgDwCNzTP7GCV-dndJVLU',
+  firebaseDB: 'https://students-base-cd739-default-rtdb.europe-west1.firebasedatabase.app/'
 };
 
 /*

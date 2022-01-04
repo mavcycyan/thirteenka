@@ -1,0 +1,82 @@
+<form class="form stud-form" (submit)="onSubmit()" [formGroup]="studForm">
+    <div *ngIf="errors" class="form-serv-error">
+        {{errors}}
+    </div>
+    <div class="form-input full">
+        <label for="">Surname</label>
+        <input type="text" name="surname" placeholder="Surname" formControlName="surname">
+    </div>
+    <div class="form-input">
+        <label for="">First name</label>
+        <input type="text" name="first-name" placeholder="First name" formControlName="firstName">
+    </div>
+    <div class="form-input">
+        <label for="">Patronymic</label>
+        <input type="text" name="patronymic" placeholder="Patronymic" formControlName="patronymic">
+    </div>
+    <div class="form-input">
+        <label for="">Birthday</label>
+        <input type="text" name="birthday" placeholder="Birthday" formControlName="birthday">
+    </div>
+    <div class="form-input">
+        <label for="">Citizenship</label>
+        <input type="text" name="citizenship" placeholder="Citizenship" formControlName="citizenship">
+    </div>
+    <div class="form-input">
+        <label for="">Native City</label>
+        <input type="text" name="nativeCity" placeholder="Native City" formControlName="nativeCity">
+    </div>
+    <div class="form-input">
+        <label for="">Address</label>
+        <input type="text" name="address" placeholder="Address" formControlName="address">
+    </div>
+    <div class="form-input">
+        <label for="">School Finished</label>
+        <input type="text" name="schoolFinished" placeholder="School Finished" formControlName="schoolFinished">
+    </div>
+    <div class="form-input">
+        <label for="">Chair</label>
+        <input type="text" name="chair" placeholder="Chair" formControlName="chair">
+    </div>
+    <div class="form-input">
+        <label for="">Faculty</label>
+        <input type="text" name="faculty" placeholder="Faculty" formControlName="faculty">
+    </div>
+    <div class="form-input">
+        <label for="">Group</label>
+        <input type="text" name="group" placeholder="Group" formControlName="group">
+    </div>
+    <div class="form-input">
+        <label for="">Educ Form</label>
+        <input type="text" name="educForm" placeholder="Educ Form" formControlName="educForm">
+    </div>
+    <div class="form-input">
+        <label for="">Curator</label>
+        <input type="text" name="curator" placeholder="Curator" formControlName="curator">
+    </div>
+    <div class="form-input">
+        <label for="">Degree</label>
+        <input type="text" name="degree" placeholder="Degree" formControlName="degree">
+    </div>
+    <div class="form-input">
+        <label for="">Year Start</label>
+        <input type="text" name="yearStart" placeholder="Year Start" formControlName="yearStart">
+    </div>
+    <div class="form-input">
+        <label for="">Year End</label>
+        <input type="text" name="yearEnd" placeholder="Year End" formControlName="yearEnd">
+    </div>
+    <div class="form-input">
+        <label for="">Status</label>
+        <input type="text" name="status" placeholder="Status" formControlName="status">
+    </div>
+    <div class="form-input">
+        <label for="">Budget</label>
+        <input type="text" name="budget" placeholder="Budget" formControlName="budget">
+    </div>
+    <div class="form-input">
+        <label for="">Scholarship</label>
+        <input type="text" name="scholarship" placeholder="Scholarship" formControlName="scholarship">
+    </div>
+    <button type="submit">Add</button>
+</form>
