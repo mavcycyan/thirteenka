@@ -2,7 +2,15 @@
     <div *ngIf="errors" class="form-serv-error">
         {{errors}}
     </div>
-    <input type="text" formControlName="email">
-    <input type="password" formControlName="password">
-    <button type="submit">Submit</button>
+    <div class="form-input">
+        <label for="">E-mail</label>
+        <input type="text" formControlName="email">
+    </div>
+    <div class="form-input">
+        <label for="">Password</label>
+        <input type="password" formControlName="password">
+    </div>
+    <div class="form-btn">
+        <button type="submit" class="btn-large waves-effect waves-light brown">Submit</button>
+    </div>
 </form>

@@ -1,0 +1,31 @@
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: auto;
+}
+
+.auth-page-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 0 15px;
+}
+
+.auth-page-tabs ul {
+    display: flex;
+    margin: 0 -15px;
+}
+
+.auth-page-tabs ul li {
+    padding: 0 15px;
+    width: 50%;
+}
+
+.auth-page-tabs ul li a {
+    width: 100%;
+}
+
+.auth-page-tabs {
+    margin-bottom: 15px;
+}

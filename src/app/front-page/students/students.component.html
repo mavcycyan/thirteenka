@@ -26,8 +26,18 @@
                 <span class="students-list-budg">{{stud.budget}}</span>
                 <span class="students-list-scsh">{{stud.scholarship}}</span>
             </a>
-            <div (click)="removeStudent(stud._id)">&times;</div>
+            <div (click)="showModal(stud._id, rm_stud)">&times;</div>
         </div>
+    </div>
+</div>
+
+<div id="remove_stud" class="modal" #rm_stud>
+    <div class="modal-content">
+        <h4>You are deleting student</h4>
+        <p>Are you sure ?</p>
+    </div>
+    <div class="modal-footer">
+        <button (click)="removeStudent(studForRemove)" class="modal-close waves-effect waves-green btn-flat">Agree</button>
     </div>
 </div>
 

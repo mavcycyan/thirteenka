@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BehaviorSubject} from "rxjs/index";
 
 @Component({
   selector: 'app-auth-page',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthPageComponent implements OnInit {
 
+    isLogin: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+    checkPage(str: string): void {
+      this.isLogin = (str === 'login') ? true : false;
+    }
 
 }

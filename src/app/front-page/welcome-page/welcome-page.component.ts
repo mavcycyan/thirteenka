@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {GlobalVarsService} from "../../global-vars.service";
+import {GlobalVarsService} from "../../includes/global-vars.service";
 import {interval, Subscription} from "rxjs/index";
 
 @Component({

@@ -1,0 +1,7 @@
+input.ng-invalid {
+    border-color: #f00;
+}
+
+.form-btn {
+    margin-top: 20px;
+}

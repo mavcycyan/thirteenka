@@ -3,10 +3,10 @@
         <div class="auth-page-tabs">
             <ul>
                 <li>
-                    <a [routerLink]="['login']" routerLinkActive="active">Sign In</a>
+                    <a [routerLink]="['login']" class="btn-large waves-effect waves-light" [ngClass]="{amber: isLogin, grey: !isLogin}" routerLinkActive="active" (click)="checkPage('login')">Sign In</a>
                 </li>
                 <li>
-                    <a [routerLink]="['register']" routerLinkActive="active">Sign Up</a>
+                    <a [routerLink]="['register']" class="btn-large waves-effect waves-light" [ngClass]="{amber: !isLogin, grey: isLogin}" routerLinkActive="active" (click)="checkPage('register')">Sign Up</a>
                 </li>
             </ul>
         </div>

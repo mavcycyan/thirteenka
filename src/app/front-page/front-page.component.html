@@ -3,7 +3,7 @@
 <main>
     <div class="">
         <div class="row">
-            <nav class="col side-menu">
+            <nav class="col side-menu brown">
                 <ul>
                     <li>
                         <a [routerLink]="['']" routerLinkActive="active">Home</a>
@@ -13,6 +13,9 @@
                     </li>
                     <li>
                         <a [routerLink]="['chairs']" routerLinkActive="active">Chairs</a>
+                    </li>
+                    <li>
+                        <button (click)="logOut()" class="side-menu-lo">Log Out</button>
                     </li>
                 </ul>
             </nav>
