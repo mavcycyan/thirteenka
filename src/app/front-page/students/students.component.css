@@ -1,0 +1,94 @@
+.table {
+}
+
+.table-row {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+
+.table-col {
+    padding: 15px 10px;
+}
+
+.table-row.head {
+    font-weight: 700;
+}
+
+.table-row:last-child {
+    border-bottom: 0;
+}
+
+.table-col.num {
+    width: 29px;
+}
+
+.table-col.name {
+    width: 145px;
+}
+
+.table-col.cit {
+    width: 90px;
+}
+
+.table-col.chair {
+    width: 230px;
+}
+
+.table-col.spec {
+    width: 230px;
+}
+
+.table-col.gr {
+    width: 80px;
+}
+
+.table-col.deg {
+    width: 84px;
+}
+
+.table-col.eds {
+    width: 80px;
+}
+
+.table-col.ede {
+    width: 80px;
+}
+
+.table-col.budg {
+    width: 70px;
+}
+
+.table-col.schol {
+    width: 100px;
+}
+
+@media(max-width: 1560px) {
+
+    .table-col.chair {
+        width: 160px;
+    }
+
+    .table-col.spec {
+        width: 160px;
+    }
+}
+
+@media(max-width: 1500px) {
+
+    .table-col.eds {
+        display: none;
+    }
+
+    .table-col.ede {
+        display: none;
+    }
+}
+
+@media(max-width: 1300px) {
+
+    .table-col.cit {
+        display: none;
+    }
+}

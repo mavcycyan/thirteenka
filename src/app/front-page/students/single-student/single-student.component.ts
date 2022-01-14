@@ -5,6 +5,7 @@ import {StudentsService} from "../students.service";
 import {Subscription} from "rxjs/index";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {switchMap} from "rxjs/internal/operators";
+import {MaterializeService} from "../../../includes/materialize.service";
 
 @Component({
   selector: 'app-single-student',
@@ -20,17 +21,20 @@ export class SingleStudentComponent implements OnInit, OnDestroy {
     studId: string = '';
     studSub: Subscription = new Subscription();
 
+    addUpdTxt: string = 'add';
+    isUpd: boolean = false;
+
     studForm: FormGroup = new FormGroup({
         surname: new FormControl('', Validators.required),
         firstName: new FormControl('', Validators.required),
         patronymic: new FormControl('', Validators.required),
-        birthday: new FormControl('', Validators.required),
+        birthday: new FormControl(''),
         citizenship: new FormControl(''),
         nativeCity: new FormControl(''),
         address: new FormControl(''),
         schoolFinished: new FormControl(''),
         chair: new FormControl(''),
-        faculty: new FormControl(''),
+        speciality: new FormControl(''),
         group: new FormControl(''),
         educForm: new FormControl(''),
         curator: new FormControl(''),
@@ -59,13 +63,13 @@ export class SingleStudentComponent implements OnInit, OnDestroy {
                     surname: new FormControl(stData.surname, Validators.required),
                     firstName: new FormControl(stData.firstName, Validators.required),
                     patronymic: new FormControl(stData.patronymic, Validators.required),
-                    birthday: new FormControl(stData.birthday, Validators.required),
+                    birthday: new FormControl(stData.birthday),
                     citizenship: new FormControl(stData.citizenship),
                     nativeCity: new FormControl(stData.nativeCity),
                     address: new FormControl(stData.address),
                     schoolFinished: new FormControl(stData.schoolFinished),
                     chair: new FormControl(stData.chair),
-                    faculty: new FormControl(stData.faculty),
+                    speciality: new FormControl(stData.speciality),
                     group: new FormControl(stData.group),
                     educForm: new FormControl(stData.educForm),
                     curator: new FormControl(stData.curator),
@@ -76,8 +80,18 @@ export class SingleStudentComponent implements OnInit, OnDestroy {
                     budget: new FormControl(stData.budget),
                     scholarship: new FormControl(stData.scholarship)
                 });
+                this.addUpdTxt = 'update';
+                this.isUpd = true;
             }
         })
+    }
+
+    datePick(el: any) {
+        const options = {
+            format: 'dd.mm.yyyy'
+        };
+        const dp = MaterializeService.datepicker(el, options);
+        dp.open();
     }
 
     onSubmit() {
@@ -105,11 +119,32 @@ export class SingleStudentComponent implements OnInit, OnDestroy {
                     },
                 )
             }
+        } else {
+            MaterializeService.toast('Fill all required fields!', 'red')
         }
+    }
+
+    showModal(el: any): void {
+        const modal = MaterializeService.modal(el);
+        modal.open();
+    }
+    removeStudent(id: string): void {
+        this.studService.delete(id).subscribe(
+            response => {
+                this.router.navigate(['students'])
+                MaterializeService.toast(`Student removed.`);
+            },
+            error => {
+                MaterializeService.toast(`Some error occurred!`);
+                console.log(error.error.error);
+            }
+        )
     }
 
     ngOnDestroy(): void {
         this.studSub.unsubscribe();
     }
+
+
 
 }

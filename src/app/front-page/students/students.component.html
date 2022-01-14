@@ -1,10 +1,10 @@
 <div class="students">
     <div class="students-top">
         <div class="students-top-col">
-            <button>Filters</button>
+            <button type="button" class="waves-effect waves-light btn-small blue"><i class="material-icons right">filter_list</i>Filters</button>
         </div>
         <div class="students-top-col">
-            <a [routerLink]="['add']">Add new student</a>
+            <a [routerLink]="['add']" class="waves-effect waves-light btn-small brown"><i class="material-icons right">add</i>Add new student</a>
         </div>
     </div>
     <div class="students-form">
@@ -12,21 +12,58 @@
         </form>
     </div>
     <div class="students-list">
-        <div *ngFor="let stud of students; let i = index;">
-            <a [routerLink]="['edit', stud._id]" class="students-list-row is-stud">
-                <span class="students-list-num">{{ i+1 }}</span>
-                <span class="students-list-fio">{{stud.surname}} {{stud.firstName}}</span>
-                <span class="students-list-living_city">{{stud.citizenship}}</span>
-                <span class="students-list-chair">{{stud.chair}}</span>
-                <span class="students-list-fac">{{stud.faculty}}</span>
-                <span class="students-list-group">{{stud.group}}</span>
-                <span class="students-list-degree">{{stud.degree}}</span>
-                <span class="students-list-year_start">{{stud.yearStart}}</span>
-                <span class="students-list-year_end">{{stud.yearEnd}}</span>
-                <span class="students-list-budg">{{stud.budget}}</span>
-                <span class="students-list-scsh">{{stud.scholarship}}</span>
-            </a>
-            <div (click)="showModal(stud._id, rm_stud)">&times;</div>
+        <div class="table">
+            <div class="table-row head">
+                <div class="table-col num">#</div>
+                <div class="table-col name">Full Name</div>
+                <div class="table-col cit">Citizenship</div>
+                <div class="table-col chair">Chair</div>
+                <div class="table-col spec">Speciality</div>
+                <div class="table-col gr">Group</div>
+                <div class="table-col deg">Degree</div>
+                <div class="table-col eds">Ed. starts</div>
+                <div class="table-col ede">Ed. ends</div>
+                <div class="table-col budg">Budget</div>
+                <div class="table-col schol">Scholarship</div>
+            </div>
+            <div *ngFor="let stud of students; let i = index;">
+                <a [routerLink]="['edit', stud._id]" class="table-row" >
+                    <span class="table-col num">
+                        <span class="students-list-num">{{ i+1 }}</span>
+                    </span>
+                    <span class="table-col name">
+                        <span class="students-list-fio">{{stud.surname}} {{stud.firstName}}</span>
+                    </span>
+                    <span class="table-col cit">
+                        <span class="students-list-living_city">{{stud.citizenship}}</span>
+                    </span>
+                    <span class="table-col chair">
+                        <span class="students-list-chair">{{stud.chair}}</span>
+                    </span>
+                    <span class="table-col spec">
+                        <span class="students-list-fac">{{stud.speciality}}</span>
+                    </span>
+                    <span class="table-col gr">
+                        <span class="students-list-group">{{stud.group}}</span>
+                    </span>
+                    <span class="table-col deg">
+                        <span class="students-list-degree">{{stud.degree}}</span>
+                    </span>
+                    <span class="table-col eds">
+                        <span class="students-list-year_start">{{stud.yearStart}}</span>
+                    </span>
+                    <span class="table-col ede">
+                        <span class="students-list-year_end">{{stud.yearEnd}}</span>
+                    </span>
+                    <span class="table-col budg">
+                        <span class="students-list-budg">{{stud.budget}}</span>
+                    </span>
+                    <span class="table-col schol">
+                        <span class="students-list-scsh">{{stud.scholarship}}</span>
+                    </span>
+                </a>
+                <span (click)="showModal(stud._id, rm_stud)">&times;</span>
+            </div>
         </div>
     </div>
 </div>

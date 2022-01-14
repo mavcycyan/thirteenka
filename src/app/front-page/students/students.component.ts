@@ -22,7 +22,6 @@ export class StudentsComponent implements OnInit {
   }
 
   showModal(id: string, el: any): void {
-      console.log(1);
       this.studForRemove = id;
       const modal = MaterializeService.modal(el);
       modal.open();

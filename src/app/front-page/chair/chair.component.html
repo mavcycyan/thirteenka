@@ -1,8 +1,52 @@
-<p>chair works!</p>
-<button (click)="tst()">Toast</button>
-<button (click)="mdl(mdl1)">Modal</button>
+<h1>Chairs</h1>
 
-<div id="modal1" class="modal" #mdl1>
+<div>
+    <div class="students-top-col">
+        <button (click)="mdl(chair_modl)" class="waves-effect waves-light btn-small brown"><i class="material-icons right">add</i>Add chair</button>
+    </div>
+</div>
+
+<table class="highlight responsive-table">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Name</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Chair 1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Chair 2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Chair 3</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<h2>Specialities</h2>
+
+<ul>
+    <li>
+        Speciality 1
+    </li>
+    <li>
+        Speciality 2
+    </li>
+    <li>
+        Speciality 3
+    </li>
+</ul>
+
+
+<div id="modal1" class="modal" #chair_modl>
     <div class="modal-content">
         <h4>Modal Header</h4>
         <p>A bunch of text</p>

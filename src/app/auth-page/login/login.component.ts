@@ -4,6 +4,7 @@ import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
 import {Subscription} from "rxjs/index";
+import {MaterializeService} from "../../includes/materialize.service";
 
 @Component({
   selector: 'app-login',
@@ -46,9 +47,13 @@ export class LoginComponent implements OnInit, OnDestroy {
                   } else {
                       this.name = response.email.split('@')[0];
                   }
-                  this.cookies.set('user_token', this.token, {expires: 0.2});
-                  this.cookies.set('user_name', this.name, {expires: 0.2});
+                  const helper = 0.08;
+                  const exp = (response.expiresIn) ? (+response.expiresIn / 86400) + helper : 0.1; // 86400 секунд в сутках
+
+                  this.cookies.set('user_token', this.token, {expires: exp});
+                  this.cookies.set('user_name', this.name, {expires: exp});
                   this.router.navigate(['']);
+                  MaterializeService.toast(`Logged in as "${this.name}"`);
 
               },
               error => {
@@ -56,6 +61,8 @@ export class LoginComponent implements OnInit, OnDestroy {
                   console.log('Error: ', error);
               }
           );
+      } else {
+          MaterializeService.toast('Fill all required fields!', 'red')
       }
   }
 

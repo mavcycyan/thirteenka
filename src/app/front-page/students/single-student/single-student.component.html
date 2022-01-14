@@ -3,80 +3,91 @@
         {{errors}}
     </div>
     <div class="form-input full">
-        <label for="">Surname</label>
+        <label>Surname</label>
         <input type="text" name="surname" placeholder="Surname" formControlName="surname">
     </div>
     <div class="form-input">
-        <label for="">First name</label>
+        <label>First name</label>
         <input type="text" name="first-name" placeholder="First name" formControlName="firstName">
     </div>
     <div class="form-input">
-        <label for="">Patronymic</label>
+        <label>Patronymic</label>
         <input type="text" name="patronymic" placeholder="Patronymic" formControlName="patronymic">
     </div>
     <div class="form-input">
-        <label for="">Birthday</label>
-        <input type="text" name="birthday" placeholder="Birthday" formControlName="birthday">
+        <label>Birthday</label>
+        <input type="text" name="birthday" class="datepicker" placeholder="Birthday" formControlName="birthday" (focus)="datePick(birth)" #birth>
     </div>
     <div class="form-input">
-        <label for="">Citizenship</label>
+        <label>Citizenship</label>
         <input type="text" name="citizenship" placeholder="Citizenship" formControlName="citizenship">
     </div>
     <div class="form-input">
-        <label for="">Native City</label>
+        <label>Native City</label>
         <input type="text" name="nativeCity" placeholder="Native City" formControlName="nativeCity">
     </div>
     <div class="form-input">
-        <label for="">Address</label>
+        <label>Address</label>
         <input type="text" name="address" placeholder="Address" formControlName="address">
     </div>
     <div class="form-input">
-        <label for="">School Finished</label>
+        <label>School Finished</label>
         <input type="text" name="schoolFinished" placeholder="School Finished" formControlName="schoolFinished">
     </div>
     <div class="form-input">
-        <label for="">Chair</label>
+        <label>Chair</label>
         <input type="text" name="chair" placeholder="Chair" formControlName="chair">
     </div>
     <div class="form-input">
-        <label for="">Faculty</label>
-        <input type="text" name="faculty" placeholder="Faculty" formControlName="faculty">
+        <label>Speciality</label>
+        <input type="text" name="speciality" placeholder="Speciality" formControlName="speciality">
     </div>
     <div class="form-input">
-        <label for="">Group</label>
+        <label>Group</label>
         <input type="text" name="group" placeholder="Group" formControlName="group">
     </div>
     <div class="form-input">
-        <label for="">Educ Form</label>
+        <label>Educ Form</label>
         <input type="text" name="educForm" placeholder="Educ Form" formControlName="educForm">
     </div>
     <div class="form-input">
-        <label for="">Curator</label>
+        <label>Curator</label>
         <input type="text" name="curator" placeholder="Curator" formControlName="curator">
     </div>
     <div class="form-input">
-        <label for="">Degree</label>
+        <label>Degree</label>
         <input type="text" name="degree" placeholder="Degree" formControlName="degree">
     </div>
     <div class="form-input">
-        <label for="">Year Start</label>
+        <label>Year Start</label>
         <input type="text" name="yearStart" placeholder="Year Start" formControlName="yearStart">
     </div>
     <div class="form-input">
-        <label for="">Year End</label>
+        <label>Year End</label>
         <input type="text" name="yearEnd" placeholder="Year End" formControlName="yearEnd">
     </div>
     <div class="form-input">
-        <label for="">Status</label>
+        <label>Status</label>
         <input type="text" name="status" placeholder="Status" formControlName="status">
     </div>
     <div class="form-input">
-        <label for="">Budget</label>
+        <label>Budget</label>
         <input type="text" name="budget" placeholder="Budget" formControlName="budget">
     </div>
     <div class="form-input">
-        <label for="">Scholarship</label>
+        <label>Scholarship</label>
         <input type="text" name="scholarship" placeholder="Scholarship" formControlName="scholarship">
     </div>
-    <button type="submit" class="btn-large waves-effect waves-light brown">Add</button>
+    <button type="submit" class="btn-large waves-effect waves-light brown">{{addUpdTxt}}</button>
+    <button type="button" *ngIf="isUpd" class="btn-large waves-effect waves-light red" (click)="showModal(rm_stud)">Remove</button>
 </form>
+
+<div id="remove_stud" class="modal" #rm_stud>
+    <div class="modal-content">
+        <h4>You are deleting student</h4>
+        <p>Are you sure ?</p>
+    </div>
+    <div class="modal-footer">
+        <button (click)="removeStudent(studId)" class="modal-close waves-effect waves-green btn-flat">Agree</button>
+    </div>
+</div>

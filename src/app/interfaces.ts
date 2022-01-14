@@ -20,7 +20,7 @@ export interface StudentData {
     address: string,
     schoolFinished: string,
     chair: string,
-    faculty: string,
+    speciality: string,
     group: string,
     educForm: string,
     curator: string,

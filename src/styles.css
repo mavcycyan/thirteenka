@@ -19,3 +19,11 @@ main {
 .col {
     padding: 0 15px;
 }
+
+input.ng-invalid.ng-touched {
+    border-color: #f00;
+}
+form.ng-submitted input.ng-invalid {
+    border-color: #f00;
+}
+
