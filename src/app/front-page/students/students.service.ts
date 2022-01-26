@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs/index";
+import {Observable, pipe} from "rxjs/index";
 import {StudentData} from "../../interfaces";
 import {map} from "rxjs/internal/operators";
 import {environment} from "../../../environments/environment";
@@ -13,7 +13,7 @@ export class StudentsService {
   constructor(private httpClient: HttpClient) {}
 
   getAll(): Observable<StudentData[]> {
-    return this.httpClient.get<StudentData[]>('https://students-base-cd739-default-rtdb.europe-west1.firebasedatabase.app/students.json')
+    return this.httpClient.get<StudentData[]>(`${environment.firebaseDB}students.json`)
         .pipe(map( (response: {[key: string]: any}) => {
           return Object
               .keys(response)

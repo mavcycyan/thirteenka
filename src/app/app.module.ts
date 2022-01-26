@@ -19,6 +19,9 @@ import { RegisterComponent } from "./auth-page/register/register.component";
 import { StudentsComponent } from "./front-page/students/students.component";
 import { SingleStudentComponent } from "./front-page/students/single-student/single-student.component";
 import { StudInterceptor } from "./includes/stud.interceptor";
+import {ChairComponent} from "./front-page/chair/chair.component";
+import {SpecializationComponent} from "./front-page/chair/specialization/specialization.component";
+import {SpecFormComponent} from "./front-page/chair/spec-form/spec-form.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { StudInterceptor } from "./includes/stud.interceptor";
     RegisterComponent,
     WelcomePageComponent,
     StudentsComponent,
-    SingleStudentComponent
+    SingleStudentComponent,
+    ChairComponent,
+    SpecializationComponent,
+    SpecFormComponent
   ],
   imports: [
     BrowserModule,

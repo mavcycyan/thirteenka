@@ -1,0 +1,32 @@
+.spec-table .num {
+    width: 32px;
+}
+
+.spec-table .name {
+    width: calc(100% - 80px);
+}
+
+.spec-table .del {
+    width: 48px;
+    text-align: right;
+}
+
+.spec-btn {
+    border: 0;
+    background: none;
+    width: auto;
+    height: 31px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.spec-btn:hover {
+    text-decoration: underline;
+}
+
+.spec-btn.del {
+    color: #f00;
+}
+.spec-btn.del:hover {
+    text-decoration: none;
+}

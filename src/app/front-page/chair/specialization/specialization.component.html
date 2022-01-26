@@ -1,0 +1,18 @@
+<table class="responsive-table spec-table">
+    <thead>
+        <th class="num">#</th>
+        <th class="name">Name</th>
+        <th class="del">Delete</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let spec of list; let i = index;">
+            <td class="num">{{i}}</td>
+            <td class="name">
+                <button type="button" class="spec-btn" (click)="getSpecData(spec._id)">{{spec.name}}</button>
+            </td>
+            <td class="del">
+                <button type="button" class="spec-btn del" (click)="deleteSpec(spec._id)"><i class="material-icons">clear</i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>

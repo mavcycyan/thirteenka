@@ -1,0 +1,48 @@
+.chair-top {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chair-btn {
+    flex: 1;
+    text-align: right;
+    margin-bottom: 16px;
+}
+
+.chair-ttl {
+    padding-right: 15px;
+}
+
+.chair-row {
+    margin: 0 -15px;
+    display: flex;
+}
+
+.chair-col {
+    padding: 0 15px;
+}
+.chair-col.col-btn {
+    flex: 1;
+    text-align: right;
+    margin-bottom: 16px;
+}
+
+.chair-table td.num{
+    width: 32px;
+}
+.chair-table td.name{
+
+}
+.chair-table td.btns{
+    width: 190px;
+}
+.chair-table td.btns span{
+    display: flex;
+    justify-content: flex-end;
+}
+.chair-table td.btns button{
+    margin-left: 10px;
+}
+.chair-table td.btns button:first-child{
+    margin-left: 0px;
+}

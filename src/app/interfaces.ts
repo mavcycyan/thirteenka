@@ -31,3 +31,16 @@ export interface StudentData {
     budget: boolean,
     scholarship: boolean
 }
+
+export interface ChairData {
+    _id?: string,
+    name: string,
+    description: string
+}
+
+export interface SpecData {
+    _id?: string,
+    name: string,
+    description: string,
+    chair?: string
+}

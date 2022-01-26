@@ -1,12 +1,13 @@
-<h1>Chairs</h1>
 
-<div>
-    <div class="students-top-col">
-        <button (click)="mdl(chair_modl)" class="waves-effect waves-light btn-small brown"><i class="material-icons right">add</i>Add chair</button>
+
+<div class="chair-top">
+    <h1 class="chair-ttl">Chairs</h1>
+    <div class="chair-btn">
+        <button (click)="addNew(chair_modl)" class="waves-effect waves-light btn-small brown"><i class="material-icons right">add</i>Add chair</button>
     </div>
 </div>
 
-<table class="highlight responsive-table">
+<table *ngIf="chairsList" class="highlight responsive-table chair-table">
     <thead>
         <tr>
             <td>#</td>
@@ -14,44 +15,77 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>Chair 1</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Chair 2</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Chair 3</td>
+        <tr *ngFor="let chair of chairsList; let i = index">
+            <td class="num">{{i+1}}</td>
+            <td class="name">{{chair.name}}</td>
+            <td class="btns">
+                <span>
+                    <button type="button" class="waves-effect waves-light btn-small blue" (click)="getSpecList(chair._id)"><i class="material-icons">remove_red_eye</i></button>
+                    <button type="button" class="waves-effect waves-light btn-small brown" (click)="addNew(chair_modl, chair._id)"><i class="material-icons">create</i></button>
+                    <button type="button" class="waves-effect waves-light btn-small red" (click)="rmModal(rm_chair, chair._id)"><i class="material-icons">delete</i></button>
+                </span>
+            </td>
         </tr>
     </tbody>
 </table>
 
 <hr>
 
-<h2>Specialities</h2>
+<div class="chair-row" *ngIf="chairId !== ''">
+    <div class="chair-col">
+        <h2>Specialities</h2>
+    </div>
+    <div class="chair-col col-btn">
+        <button type="button" class="waves-effect waves-light btn-small brown" (click)="showSpecForm()">
+            <span
+                *ngIf="!specFormActive; else btnClose"
+            ><i class="material-icons right">add</i>Add specialization</span>
+            <ng-template #btnClose>
+                <span><i class="material-icons right">remove</i>Close</span>
+            </ng-template>
+        </button>
+    </div>
+</div>
 
-<ul>
-    <li>
-        Speciality 1
-    </li>
-    <li>
-        Speciality 2
-    </li>
-    <li>
-        Speciality 3
-    </li>
-</ul>
+<app-spec-form
+    *ngIf="specFormActive"
+    [chairId]="chairId"
+    [specData]="setSpecData"
+    (reloadList)="reloadSpecList()"
+></app-spec-form>
+
+<app-specialization
+        *ngIf="specList.length > 0"
+        [list]="specList"
+        (specDataEmit)="getSpec($event)"
+        (reloadList)="reloadSpecList()"
+></app-specialization>
 
 
-<div id="modal1" class="modal" #chair_modl>
+<div class="modal" #chair_modl>
+    <form class="form" [formGroup]="form" (submit)="submitForm(chair_modl)">
+        <div class="modal-content">
+            <h4>Add chair</h4>
+            <div class="form-input input-field full">
+                <input id="input_name" type="text" name="name" class="validate" formControlName="name" [ngClass]="{'active': form.value.name !== ''}">
+                <label for="input_name">Name</label>
+            </div>
+            <div class="form-input input-field full">
+                <textarea name="descr" id="textarea_descr" class="materialize-textarea" formControlName="description" [ngClass]="{'active': form.value.description !== ''}"></textarea>
+                <label for="textarea_descr">Description</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="waves-effect waves-green btn-flat">Submit</button>
+        </div>
+    </form>
+</div>
+<div id="remove_chair" class="modal" #rm_chair>
     <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
+        <h4>You are deleting the chair</h4>
+        <p>Are you sure ?</p>
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        <button (click)="removeChair(rm_chair, chairId)" class="modal-close waves-effect waves-green btn-flat">Agree</button>
     </div>
 </div>

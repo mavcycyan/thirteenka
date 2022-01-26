@@ -1,0 +1,11 @@
+<form class="form" (submit)="specSubmit(nameSpec)">
+    <div class="form-input">
+        <input type="text" [(ngModel)]="specData.name" name="name" placeholder="Name" #nameSpec="ngModel" required />
+    </div>
+    <div class="form-input">
+        <input type="text" [(ngModel)]="specData.description" name="description" placeholder="Description" />
+    </div>
+    <div class="form-button">
+        <button type="submit">Submit</button>
+    </div>
+</form>

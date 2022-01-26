@@ -1,0 +1,11 @@
+<form class="form" [formGroup]="specForm" (submit)="specSubmit()">
+    <div class="form-input">
+        <input type="text" formControlName="name" name="name" placeholder="Name" />
+    </div>
+    <div class="form-input">
+        <input type="text" formControlName="description" name="description" placeholder="Description" />
+    </div>
+    <div class="form-button">
+        <button type="submit">Submit</button>
+    </div>
+</form>
