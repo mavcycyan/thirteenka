@@ -1,11 +1,11 @@
 export interface UserData {
     displayName?: string,
     email: string,
-    expiresIn?: string,
+    expiresIn: number,
     idToken: string,
     kind?: string,
     localId?: string,
-    refreshToken?: string,
+    refreshToken: string,
     registered?: boolean
 }
 

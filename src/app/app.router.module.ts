@@ -14,11 +14,11 @@ import {SingleStudentComponent} from "./front-page/students/single-student/singl
 const routes: Routes = [
     {
         path: '', component: FrontPageComponent, canActivate: [AuthGuardGuard], children: [
-            {path: '', component: WelcomePageComponent},
-            {path: 'chairs', component: ChairComponent},
-            {path: 'students', component: StudentsComponent},
-            {path: 'students/add', component: SingleStudentComponent},
-            {path: 'students/edit/:id', component: SingleStudentComponent}
+            {path: '', component: WelcomePageComponent, canActivate: [AuthGuardGuard]},
+            {path: 'chairs', component: ChairComponent, canActivate: [AuthGuardGuard]},
+            {path: 'students', component: StudentsComponent, canActivate: [AuthGuardGuard]},
+            {path: 'students/add', component: SingleStudentComponent, canActivate: [AuthGuardGuard]},
+            {path: 'students/edit/:id', component: SingleStudentComponent, canActivate: [AuthGuardGuard]}
         ]
     },
     {

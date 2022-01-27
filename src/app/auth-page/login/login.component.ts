@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
 import {Subscription} from "rxjs/index";
 import {MaterializeService} from "../../includes/materialize.service";
+import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   token: string = '';
   name: string = '';
+  refreshToken: string = '';
   errors: string = '';
 
   constructor(
@@ -41,17 +43,20 @@ export class LoginComponent implements OnInit, OnDestroy {
               this.loginForm.value.password
           ).subscribe(
               response => {
+                  console.log(response);
                   this.token = response.idToken;
+                  this.refreshToken = response.refreshToken;
                   if (response.displayName && response.displayName !== '') {
                       this.name = response.displayName;
                   } else {
                       this.name = response.email.split('@')[0];
                   }
-                  const helper = 0.08;
-                  const exp = (response.expiresIn) ? (+response.expiresIn / 86400) + helper : 0.1; // 86400 секунд в сутках
+                  const exp = response.expiresIn * 1000;
+                  const date = new Date( Date.now() + exp );
 
-                  this.cookies.set('user_token', this.token, {expires: exp});
-                  this.cookies.set('user_name', this.name, {expires: exp});
+                  this.cookies.set('user_token', this.token, {expires: date});
+                  this.cookies.set('user_name', this.name, {expires: date});
+                  this.cookies.set('user_refresh', this.refreshToken, {expires: date});
                   this.router.navigate(['']);
                   MaterializeService.toast(`Logged in as "${this.name}"`);
 

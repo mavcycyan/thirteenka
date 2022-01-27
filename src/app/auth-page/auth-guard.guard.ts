@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {CookieService} from "ngx-cookie-service";
+import {MaterializeService} from "../includes/materialize.service";
 
 
 @Injectable({
@@ -20,6 +21,8 @@ export class AuthGuardGuard implements CanActivate {
     const isAuth = (token && token !== '') ? true : false;
     if (!isAuth) {
         this.router.navigate(['login']);
+        MaterializeService.toast('Session expired', 'red');
+        MaterializeService.toast('Please, re-enter your authorization data');
     }
     return isAuth;
   }
