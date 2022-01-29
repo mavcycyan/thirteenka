@@ -36,11 +36,17 @@
     </div>
     <div class="form-input">
         <label>Chair</label>
-        <input type="text" name="chair" placeholder="Chair" formControlName="chair">
+        <select name="chair" formControlName="chair" (change)="changeChair($event)" style="display: block;">
+            <option value="" disabled>Chair</option>
+            <option *ngFor="let chair of chairList" [value]="chair._id">{{chair.name}}</option>
+        </select>
     </div>
     <div class="form-input">
         <label>Speciality</label>
-        <input type="text" name="speciality" placeholder="Speciality" formControlName="speciality">
+        <select name="speciality" formControlName="speciality" (change)="changeSpec($event)" style="display: block;">
+            <option value="" disabled>Speciality</option>
+            <option *ngFor="let spec of specList" [value]="spec._id">{{spec.name}}</option>
+        </select>
     </div>
     <div class="form-input">
         <label>Group</label>
@@ -78,8 +84,10 @@
         <label>Scholarship</label>
         <input type="text" name="scholarship" placeholder="Scholarship" formControlName="scholarship">
     </div>
-    <button type="submit" class="btn-large waves-effect waves-light brown">{{addUpdTxt}}</button>
-    <button type="button" *ngIf="isUpd" class="btn-large waves-effect waves-light red" (click)="showModal(rm_stud)">Remove</button>
+    <div class="single_student-btns">
+        <button type="submit" class="btn-large waves-effect waves-light brown">{{addUpdTxt}}</button>
+        <button type="button" *ngIf="isUpd" class="btn-large waves-effect waves-light red" (click)="showModal(rm_stud)">Remove</button>
+    </div>
 </form>
 
 <div id="remove_stud" class="modal" #rm_stud>

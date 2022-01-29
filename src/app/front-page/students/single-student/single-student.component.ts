@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
-import {StudentData} from "../../../interfaces";
+import {ChairData, SpecData, StudentData} from "../../../interfaces";
 import {StudentsService} from "../students.service";
 import {Subscription} from "rxjs/index";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -19,10 +19,13 @@ export class SingleStudentComponent implements OnInit, OnDestroy {
     errors: string = '';
 
     studId: string = '';
-    studSub: Subscription = new Subscription();
+    studSub$: Subscription = new Subscription();
 
     addUpdTxt: string = 'add';
     isUpd: boolean = false;
+
+    chairList: ChairData[] = [];
+    specList: SpecData[] = [];
 
     studForm: FormGroup = new FormGroup({
         surname: new FormControl('', Validators.required),
@@ -52,38 +55,57 @@ export class SingleStudentComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.studSub = this.route.params.pipe<StudentData>(
+        this.studSub$ = this.route.params.pipe<StudentData>(
             switchMap( (params: Params) => {
                 this.studId = params['id'];
                 return this.studService.getById(params['id'])
             } )
         ).subscribe((stData: StudentData) => {
             if (stData) {
-                this.studForm = new FormGroup({
-                    surname: new FormControl(stData.surname, Validators.required),
-                    firstName: new FormControl(stData.firstName, Validators.required),
-                    patronymic: new FormControl(stData.patronymic, Validators.required),
-                    birthday: new FormControl(stData.birthday),
-                    citizenship: new FormControl(stData.citizenship),
-                    nativeCity: new FormControl(stData.nativeCity),
-                    address: new FormControl(stData.address),
-                    schoolFinished: new FormControl(stData.schoolFinished),
-                    chair: new FormControl(stData.chair),
-                    speciality: new FormControl(stData.speciality),
-                    group: new FormControl(stData.group),
-                    educForm: new FormControl(stData.educForm),
-                    curator: new FormControl(stData.curator),
-                    degree: new FormControl(stData.degree),
-                    yearStart: new FormControl(stData.yearStart),
-                    yearEnd: new FormControl(stData.yearEnd),
-                    status: new FormControl(stData.status),
-                    budget: new FormControl(stData.budget),
-                    scholarship: new FormControl(stData.scholarship)
-                });
-                this.addUpdTxt = 'update';
-                this.isUpd = true;
+                this.studService.getAllChairs()
+                    .pipe<ChairData[]>(
+                        switchMap( (chairs: ChairData[]) => {
+                            this.chairList = chairs;
+                            return this.studService.getSpecByChair(stData.chair);
+                        })
+                    ).subscribe( (response: SpecData[]) => {
+                        this.specList = response;
+
+                        this.studForm.patchValue({
+                            surname: stData.surname,
+                            firstName: stData.firstName,
+                            patronymic:  stData.patronymic,
+                            birthday: stData.birthday,
+                            citizenship: stData.citizenship,
+                            nativeCity:  stData.nativeCity,
+                            address: stData.address,
+                            schoolFinished: stData.schoolFinished,
+                            chair: stData.chair,
+                            speciality: stData.speciality,
+                            group: stData.group,
+                            educForm: stData.educForm,
+                            curator: stData.curator,
+                            degree: stData.degree,
+                            yearStart: stData.yearStart,
+                            yearEnd: stData.yearEnd,
+                            status: stData.status,
+                            budget: stData.budget,
+                            scholarship: stData.scholarship
+                        });
+                        this.addUpdTxt = 'update';
+                        this.isUpd = true;
+
+                    } )
             }
         })
+
+        if (this.studId === '' || this.studId === undefined) {
+            this.studService.getAllChairs().subscribe( (chairs: ChairData[]) => {
+                this.chairList = chairs;
+            });
+        }
+
+
     }
 
     datePick(el: any) {
@@ -141,8 +163,23 @@ export class SingleStudentComponent implements OnInit, OnDestroy {
         )
     }
 
+    changeChair(e: any) {
+        this.studForm.patchValue({
+            chair: e.target.value
+        })
+        this.studService.getSpecByChair(e.target.value).subscribe( (response: SpecData[]) => {
+            this.specList = response;
+        } )
+    }
+
+    changeSpec(e: any) {
+        this.studForm.patchValue({
+            speciality: e.target.value
+        })
+    }
+
     ngOnDestroy(): void {
-        this.studSub.unsubscribe();
+        this.studSub$.unsubscribe();
     }
 
 

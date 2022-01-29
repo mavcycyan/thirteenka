@@ -26,7 +26,7 @@
                 <div class="table-col budg">Budget</div>
                 <div class="table-col schol">Scholarship</div>
             </div>
-            <div *ngFor="let stud of students; let i = index;">
+            <div *ngFor="let stud of students; let i = index;" class="table-row-wrap">
                 <a [routerLink]="['edit', stud._id]" class="table-row" >
                     <span class="table-col num">
                         <span class="students-list-num">{{ i+1 }}</span>
@@ -62,7 +62,7 @@
                         <span class="students-list-scsh">{{stud.scholarship}}</span>
                     </span>
                 </a>
-                <span (click)="showModal(stud._id, rm_stud)">&times;</span>
+                <span (click)="showModal(stud._id, rm_stud)" class="table-row-remove"><i class="material-icons">clear</i></span>
             </div>
         </div>
     </div>

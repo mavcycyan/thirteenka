@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable, pipe} from "rxjs/index";
-import {StudentData} from "../../interfaces";
+import {ChairData, SpecData, StudentData} from "../../interfaces";
 import {map} from "rxjs/internal/operators";
 import {environment} from "../../../environments/environment";
 
@@ -35,4 +35,46 @@ export class StudentsService {
   delete(id: string): Observable<StudentData> {
       return this.httpClient.delete<StudentData>(`${environment.firebaseDB}students/${id}.json`);
   }
+
+  getAllChairs(): Observable<ChairData[]> {
+      return this.httpClient.get<ChairData[]>(`${environment.firebaseDB}chairs.json`)
+          .pipe( map( (response: {[key: string] : any}) => {
+              return Object
+                  .keys(response)
+                  .map( key => ({
+                      ...response[key],
+                      _id: key
+                  }) );
+          } ));
+  }
+
+  getAllSpec(): Observable<SpecData[]> {
+      return this.httpClient.get<SpecData[]>(`${environment.firebaseDB}specializations.json`)
+          .pipe( map( (response: {[key: string] : any}) => {
+              return Object
+                  .keys(response)
+                  .map( key => ({
+                      ...response[key],
+                      _id: key
+                  }) );
+          } ));
+  }
+    getSpecByChair(chairId: string): Observable<SpecData[]> {
+        return this.httpClient.get<SpecData[]>(`${environment.firebaseDB}specializations.json`,
+            {
+                params: {
+                    orderBy: '"chair"',
+                    equalTo: `"${chairId}"`,
+                },
+            }
+        )
+            .pipe( map( (response: {[key: string] : any}) => {
+                return Object
+                    .keys(response)
+                    .map( key => ({
+                        ...response[key],
+                        _id: key
+                    }) );
+            } ));
+    }
 }
