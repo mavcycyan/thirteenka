@@ -10,7 +10,7 @@ export class MaterializeService {
   constructor() { }
 
   static toast(html: string, classes: string = '') {
-    M.toast({html, classes});
+      M.toast({html, classes});
   }
 
   static modal(element: any): any {

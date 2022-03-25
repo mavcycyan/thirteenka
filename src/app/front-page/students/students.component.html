@@ -1,16 +1,15 @@
 <div class="students">
     <div class="students-top">
         <div class="students-top-col">
-            <button type="button" class="waves-effect waves-light btn-small blue"><i class="material-icons right">filter_list</i>Filters</button>
+            <button type="button" class="waves-effect waves-light btn-small blue" (click)="enablingFilters()"><i class="material-icons right">filter_list</i>Filters</button>
         </div>
         <div class="students-top-col">
             <a [routerLink]="['add']" class="waves-effect waves-light btn-small brown"><i class="material-icons right">add</i>Add new student</a>
         </div>
     </div>
-    <div class="students-form">
-        <form action="">
-        </form>
-    </div>
+    <app-filters
+        *ngIf="filtersEnabled"
+    ></app-filters>
     <div class="students-list">
         <div class="table">
             <div class="table-row head">
@@ -78,25 +77,3 @@
     </div>
 </div>
 
-<!--<ul>-->
-<!--<li>Фамилия</li>-->
-<!--<li>Имя</li>-->
-<!--<li>Отчество</li>-->
-<!--<li>Дата рождения</li>-->
-<!--<li>Гражданство</li>-->
-<!--<li>Родной город</li>-->
-<!--<li>Город проживания</li>-->
-<!--<li>Домашний адрес (улица, дом, квартира)</li>-->
-<!--<li>Законченное учебное заведение</li>-->
-<!--<li>Кафедра</li>-->
-<!--<li>Факультет</li>-->
-<!--<li>Группа</li>-->
-<!--<li>Форма обучения</li>-->
-<!--<li>Куратор</li>-->
-<!--<li>Квалификация</li>-->
-<!--<li>Год поступления</li>-->
-<!--<li>Год окончания</li>-->
-<!--<li>Статус (учится, академ отпуск, отчислен)</li>-->
-<!--<li>Бюджет (булевый)</li>-->
-<!--<li>Стиппендия (булевый)</li>-->
-<!--</ul>-->

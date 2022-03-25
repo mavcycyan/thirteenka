@@ -12,8 +12,18 @@ export class StudentsService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getAll(): Observable<StudentData[]> {
-    return this.httpClient.get<StudentData[]>(`${environment.firebaseDB}students.json`)
+  getAll(param: string = ''): Observable<StudentData[]> {
+    let paramsObj = {};
+    if (param !== '') {
+      paramsObj = {
+          params: {
+              orderBy: '"surname"',
+              equalTo: `"${param}"`,
+          },
+      }
+    }
+
+    return this.httpClient.get<StudentData[]>(`${environment.firebaseDB}students.json`, paramsObj)
         .pipe(map( (response: {[key: string]: any}) => {
           return Object
               .keys(response)
@@ -60,6 +70,7 @@ export class StudentsService {
           } ));
   }
     getSpecByChair(chairId: string): Observable<SpecData[]> {
+        console.log(chairId);
         return this.httpClient.get<SpecData[]>(`${environment.firebaseDB}specializations.json`,
             {
                 params: {

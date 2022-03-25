@@ -22,6 +22,7 @@ import { StudInterceptor } from "./includes/stud.interceptor";
 import {ChairComponent} from "./front-page/chair/chair.component";
 import {SpecializationComponent} from "./front-page/chair/specialization/specialization.component";
 import {SpecFormComponent} from "./front-page/chair/spec-form/spec-form.component";
+import {FiltersComponent} from "./front-page/students/filters/filters.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {SpecFormComponent} from "./front-page/chair/spec-form/spec-form.componen
     SingleStudentComponent,
     ChairComponent,
     SpecializationComponent,
-    SpecFormComponent
+    SpecFormComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,

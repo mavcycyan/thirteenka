@@ -16,6 +16,8 @@ export class StudentsComponent implements OnInit, OnDestroy {
 
   studSub$: Subscription = new Subscription();
 
+  filtersEnabled: boolean = false;
+
   constructor(private studService: StudentsService) { }
 
   ngOnInit(): void {
@@ -58,6 +60,10 @@ export class StudentsComponent implements OnInit, OnDestroy {
             console.log(error.error.error);
         }
     )
+  }
+
+  enablingFilters(): void {
+      this.filtersEnabled = !this.filtersEnabled;
   }
 
   ngOnDestroy(): void {

@@ -1,4 +1,5 @@
 @import "~materialize-css/dist/css/materialize.min.css";
+@import "~nouislider/dist/nouislider.css";
 
 html, body { height: 100%;
     overflow: hidden; }
@@ -27,7 +28,7 @@ form.ng-submitted input.ng-invalid {
     border-color: #f00;
 }
 
-.form-input select {
+.form-input select, .filter-bl select {
     cursor: pointer;
     display: block!important;
     background-color: transparent;
