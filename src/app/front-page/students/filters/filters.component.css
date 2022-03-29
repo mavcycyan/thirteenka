@@ -1,0 +1,51 @@
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.filter-bl {
+    padding: 0 15px 10px;
+    width: 100%;
+    max-width: calc(100% / 3);
+}
+
+.filter-bl.full {
+    max-width: 100%;
+}
+
+.filter-bl.half {
+    max-width: 50%;
+}
+
+.filter-bl.quat {
+    max-width: 25%;
+}
+
+.filter-bl.educ label {
+    width: 100%;
+    display: block;
+}
+
+.filter-bl.educ input {
+    width: 100%;
+    max-width: calc(50% - 15px);
+}
+
+.filter-bl.educ input:nth-child(2) {
+    margin-right: 30px;
+}
+
+.filter-bl.educ .educ-slider.noUi-horizontal {
+    height: 8px;
+    margin: 17px auto 15px;
+    max-width: calc(100% - 30px);
+}
+
+.filter-bl.educ .educ-slider.noUi-horizontal .noUi-handle {
+    top: -11px;
+}
+
+.filter-bl input, .filter-bl select {
+    height: 2rem;
+}

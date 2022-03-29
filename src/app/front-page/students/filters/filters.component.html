@@ -1,70 +1,68 @@
-<p>filter by name (input with debounce)</p>
-<p>filter by chair</p>
-<p>filter by speciality (watches, which chair was selected)</p>
-<p>filter by group (watches, which speciality was selected)</p>
-<p>filter by degree</p>
-<p>filter by education start (from start to end range)</p>
-<p>filter by education end (from start to end range)</p>
-<p>filter by budget</p>
-<p>filter by scholarship</p>
-
 <div class="filter">
     <div class="filter-row">
-        <div class="filter-bl">
+        <div class="filter-bl full">
             <label for="fullname">Full name</label>
             <input type="text" id="fullname" (keyup)="nameFilt(nameInp.value)" #nameInp>
         </div>
-        <div class="filter-bl">
+        <div class="filter-bl quat">
             <label for="chair">Chair</label>
             <select id="chair" (change)="chairFilt(chairSel.value)" #chairSel>
                 <option value="" selected>Chair</option>
                 <option *ngFor="let chair of chairs;" [value]="chair._id" >{{chair.name}}</option>
             </select>
         </div>
-        <div class="filter-bl">
+        <div class="filter-bl quat">
             <label for="speciality">Speciality</label>
             <select id="speciality">
                 <option value="" selected>Speciality</option>
                 <option *ngFor="let special of specializations;" [value]="special._id" >{{special.name}}</option>
             </select>
         </div>
-        <div class="filter-bl">
+        <div class="filter-bl quat">
             <label for="group">Group</label>
             <select id="group">
                 <option value="" selected>Group</option>
             </select>
         </div>
-        <div class="filter-bl">
+        <div class="filter-bl quat">
             <label for="degree">Degree</label>
             <select id="degree">
                 <option value="" selected>Degree</option>
-                <option value="specialist" selected>Specialist</option>
-                <option value="graduate_student" selected>Graduate student</option>
+                <option value="specialist">Specialist</option>
+                <option value="graduate_student">Graduate student</option>
             </select>
         </div>
-        <div class="filter-bl">
+        <div class="filter-bl full"></div>
+        <div class="filter-bl quat">
             <label for="ed_start">Education start</label>
-            <input type="text" id="ed_start" >
-            <input type="text" >
-            <div id="edStart" #edStart></div>
+            <select name="" id="ed_start">
+                <option value="0"></option>
+                <option *ngFor="let year of edYears" [value]="year">{{year}}</option>
+            </select>
         </div>
-        <div class="filter-bl">
+        <div class="filter-bl quat">
             <label for="ed_end">Education end</label>
-            <input type="text" id="ed_end" >
-            <div id="edEnd" #edEnd></div>
+            <select name="" id="ed_end">
+                <option value="0"></option>
+                <option *ngFor="let year of edYears" [value]="year">{{year}}</option>
+            </select>
         </div>
-        <div class="filter-bl">
-            <label>
-                <input type="checkbox" class="filled-in" >
-                <span>Has budget</span>
-            </label>
+        <div class="filter-bl quat">
+            <label for="budg">Has budget</label>
+            <select id="budg">
+                <option value="" selected>No</option>
+                <option value="">Yes</option>
+            </select>
         </div>
-        <div class="filter-bl">
-            <label>
-                <input type="checkbox" class="filled-in" >
-                <span>Scholarship</span>
-            </label>
+        <div class="filter-bl quat">
+            <label for="schol">Scholarship</label>
+            <select id="schol">
+                <option value="" selected>No</option>
+                <option value="">Yes</option>
+            </select>
+        </div>
+        <div class="filter-bl full">
+            <button type="button" class="btn-small waves-effect waves-light red">remove all</button>
         </div>
     </div>
-    <button type="button">remove all</button>
 </div>
