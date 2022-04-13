@@ -22,6 +22,11 @@ export class FiltersComponent implements OnInit  {
 
   chairSel: string = '';
   specSel: string = '';
+  degrSel: string = '';
+  yearStartSel: string = '';
+  yearEndSel: string = '';
+  budgSel: string = '';
+  schSel: string = '';
 
   constructor(private studentsService: StudentsService) {
       this.subject.pipe(
@@ -60,6 +65,11 @@ export class FiltersComponent implements OnInit  {
   remAll(): void {
       this.chairSel = '';
       this.specSel = '';
+      this.degrSel = '';
+      this.yearStartSel = '';
+      this.yearEndSel = '';
+      this.budgSel = '';
+      this.schSel = '';
       this.sendParam({type: '', value: ''});
   }
 

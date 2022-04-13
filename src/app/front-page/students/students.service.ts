@@ -15,12 +15,22 @@ export class StudentsService {
   getAll(param: FilterParam = {type: '', value: ''}): Observable<StudentData[]> {
     let paramsObj = {};
     if (param.value) {
-      paramsObj = {
-          params:{
-              orderBy: `"${param.type}"`,
-              equalTo: `"${param.value}"`
-          }
-      }
+        let value: any = param.value;
+        if (param.type === 'budget' || param.type === 'scholarship') {
+            paramsObj = {
+                params:{
+                    orderBy: `"${param.type}"`,
+                    equalTo: `${param.value}`
+                }
+            }
+        } else {
+            paramsObj = {
+                params:{
+                    orderBy: `"${param.type}"`,
+                    equalTo: `"${param.value}"`
+                }
+            }
+        }
     }
 
     return this.httpClient.get<StudentData[]>(`${environment.firebaseDB}students.json`, paramsObj)

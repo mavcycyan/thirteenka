@@ -26,39 +26,42 @@
         </div>
         <div class="filter-bl quat">
             <label for="degree">Degree</label>
-            <select id="degree">
+            <select id="degree" (change)="sendParam({type: 'degree', value: degrSel})" [(ngModel)]="degrSel">
                 <option value="" selected>Degree</option>
-                <option value="specialist">Specialist</option>
-                <option value="graduate_student">Graduate student</option>
+                <option value="Bachelor">Bachelor</option>
+                <option value="Specialist">Specialist</option>
+                <option value="Graduate student">Graduate student</option>
             </select>
         </div>
         <div class="filter-bl full"></div>
         <div class="filter-bl quat">
             <label for="ed_start">Education start</label>
-            <select name="" id="ed_start">
+            <select name="" id="ed_start" (change)="sendParam({type: 'yearStart', value: yearStartSel})" [(ngModel)]="yearStartSel">
                 <option value="0"></option>
                 <option *ngFor="let year of edYears" [value]="year">{{year}}</option>
             </select>
         </div>
         <div class="filter-bl quat">
             <label for="ed_end">Education end</label>
-            <select name="" id="ed_end">
+            <select name="" id="ed_end" (change)="sendParam({type: 'yearEnd', value: yearEndSel})" [(ngModel)]="yearEndSel">
                 <option value="0"></option>
                 <option *ngFor="let year of edYears" [value]="year">{{year}}</option>
             </select>
         </div>
         <div class="filter-bl quat">
             <label for="budg">Has budget</label>
-            <select id="budg">
-                <option value="" selected>No</option>
-                <option value="">Yes</option>
+            <select id="budg" (change)="sendParam({type: 'budget', value: budgSel})" [(ngModel)]="budgSel">
+                <option value="" selected></option>
+                <option value="false">No</option>
+                <option value="true">Yes</option>
             </select>
         </div>
         <div class="filter-bl quat">
             <label for="schol">Scholarship</label>
-            <select id="schol">
-                <option value="" selected>No</option>
-                <option value="">Yes</option>
+            <select id="schol" (change)="sendParam({type: 'scholarship', value: schSel})" [(ngModel)]="schSel">
+                <option value="" selected></option>
+                <option value="false">No</option>
+                <option value="true">Yes</option>
             </select>
         </div>
         <div class="filter-bl quat">
