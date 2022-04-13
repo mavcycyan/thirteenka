@@ -6,14 +6,14 @@
         </div>
         <div class="filter-bl quat">
             <label for="chair">Chair</label>
-            <select id="chair" (change)="chairFilt(chairSel.value)" #chairSel>
+            <select id="chair" (change)="chairFilt({type: 'chair', value: chairSel})" [(ngModel)]="chairSel" >
                 <option value="" selected>Chair</option>
                 <option *ngFor="let chair of chairs;" [value]="chair._id" >{{chair.name}}</option>
             </select>
         </div>
         <div class="filter-bl quat">
             <label for="speciality">Speciality</label>
-            <select id="speciality">
+            <select id="speciality" (change)="sendParam({type: 'speciality', value: specSel})" [(ngModel)]="specSel">
                 <option value="" selected>Speciality</option>
                 <option *ngFor="let special of specializations;" [value]="special._id" >{{special.name}}</option>
             </select>
@@ -61,8 +61,8 @@
                 <option value="">Yes</option>
             </select>
         </div>
-        <div class="filter-bl full">
-            <button type="button" class="btn-small waves-effect waves-light red">remove all</button>
+        <div class="filter-bl quat">
+            <button type="button" class="btn-small waves-effect waves-light red" (click)="remAll()">remove all</button>
         </div>
     </div>
 </div>

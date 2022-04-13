@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable, pipe} from "rxjs/index";
-import {ChairData, SpecData, StudentData} from "../../interfaces";
+import {ChairData, FilterParam, SpecData, StudentData} from "../../interfaces";
 import {map} from "rxjs/internal/operators";
 import {environment} from "../../../environments/environment";
 
@@ -12,14 +12,14 @@ export class StudentsService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getAll(param: string = ''): Observable<StudentData[]> {
+  getAll(param: FilterParam = {type: '', value: ''}): Observable<StudentData[]> {
     let paramsObj = {};
-    if (param !== '') {
+    if (param.value) {
       paramsObj = {
-          params: {
-              orderBy: '"surname"',
-              equalTo: `"${param}"`,
-          },
+          params:{
+              orderBy: `"${param.type}"`,
+              equalTo: `"${param.value}"`
+          }
       }
     }
 

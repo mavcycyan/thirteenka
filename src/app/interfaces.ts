@@ -44,3 +44,8 @@ export interface SpecData {
     description: string,
     chair?: string
 }
+
+export interface FilterParam {
+    type: string,
+    value: string
+}

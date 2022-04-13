@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {StudentData} from "../../interfaces";
+import {FilterParam, StudentData} from "../../interfaces";
 import {StudentsService} from "./students.service";
 import {MaterializeService} from "../../includes/materialize.service";
 import {forkJoin, Subscription} from "rxjs/index";
@@ -21,29 +21,7 @@ export class StudentsComponent implements OnInit, OnDestroy {
   constructor(private studService: StudentsService) { }
 
   ngOnInit(): void {
-    this.studSub$ = this.studService.getAll().subscribe((list: StudentData[]) => {
-        forkJoin([
-            this.studService.getAllChairs(),
-            this.studService.getAllSpec()
-        ]).subscribe( result => {
-
-            this.students = list.map( (el: StudentData) => {
-
-                const chairEl = result[0].filter( ch => ch._id === el.chair );
-                if (chairEl.length > 0 && chairEl[0].name !== 'undefined') {
-                    el.chair = chairEl[0].name;
-                }
-
-                const specEl = result[1].filter( sp => sp._id === el.speciality );
-
-                if (specEl.length > 0 && specEl[0].name !== 'undefined') {
-                    el.speciality = specEl[0].name;
-                }
-
-                return el;
-            } );
-        } )
-    });
+      this.reloadStudList(  {type: '', value: ''});
   }
 
   showModal(id: string, el: any): void {
@@ -64,6 +42,32 @@ export class StudentsComponent implements OnInit, OnDestroy {
 
   enablingFilters(): void {
       this.filtersEnabled = !this.filtersEnabled;
+  }
+
+  reloadStudList(param: FilterParam): void {
+      this.studSub$ = this.studService.getAll(param).subscribe((list: StudentData[]) => {
+          forkJoin([
+              this.studService.getAllChairs(),
+              this.studService.getAllSpec()
+          ]).subscribe( result => {
+
+              this.students = list.map( (el: StudentData) => {
+
+                  const chairEl = result[0].filter( ch => ch._id === el.chair );
+                  if (chairEl.length > 0 && chairEl[0].name !== 'undefined') {
+                      el.chair = chairEl[0].name;
+                  }
+
+                  const specEl = result[1].filter( sp => sp._id === el.speciality );
+
+                  if (specEl.length > 0 && specEl[0].name !== 'undefined') {
+                      el.speciality = specEl[0].name;
+                  }
+
+                  return el;
+              } );
+          } )
+      });
   }
 
   ngOnDestroy(): void {
