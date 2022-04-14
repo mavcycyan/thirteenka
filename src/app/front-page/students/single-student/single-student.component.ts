@@ -18,6 +18,8 @@ export class SingleStudentComponent implements OnInit, OnDestroy {
 
     errors: string = '';
 
+    edYears: number[] = [];
+
     studId: string = '';
     studSub$: Subscription = new Subscription();
 
@@ -55,6 +57,13 @@ export class SingleStudentComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        const edStart = 1980;
+        const edEnd = new Date().getFullYear();
+
+        for (let i = 0; i <= edEnd - edStart; i++) {
+            this.edYears[i] = edStart + i;
+        }
+
         this.studSub$ = this.route.params.pipe<StudentData>(
             switchMap( (params: Params) => {
                 this.studId = params['id'];
@@ -108,30 +117,22 @@ export class SingleStudentComponent implements OnInit, OnDestroy {
 
     }
 
-    datePick(el: any) {
-        const options = {
-            format: 'dd.mm.yyyy'
-        };
-        const dp = MaterializeService.datepicker(el, options);
-        dp.open();
-    }
-
     onSubmit() {
         if (this.studForm.status !== 'INVALID') {
             const data = this.studForm.value;
-            if (this.studId !== '') {
-                const id = this.studId;
-                this.studService.update(id, data).subscribe(
-                response => {
+            if (this.studId === '' || this.studId === undefined) {
+                this.studService.add(data).subscribe(
+                    response => {
                         this.router.navigate(['students'])
                     },
-                error => {
+                    error => {
                         this.errors = error.error.error;
                         console.log(error);
                     },
                 )
             } else {
-                this.studService.add(data).subscribe(
+                const id = this.studId;
+                this.studService.update(id, data).subscribe(
                     response => {
                         this.router.navigate(['students'])
                     },

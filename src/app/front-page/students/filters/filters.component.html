@@ -1,8 +1,16 @@
 <div class="filter">
     <div class="filter-row">
-        <div class="filter-bl full">
-            <label for="fullname">Full name</label>
-            <input type="text" id="fullname" (keyup)="nameFilt(nameInp.value)" #nameInp>
+        <div class="filter-bl three">
+            <label for="surname">Surname</label>
+            <input type="text" id="surname" (keyup)="nameFilt({type: 'surname', value: surInp})" [(ngModel)]="surInp">
+        </div>
+        <div class="filter-bl three">
+            <label for="firstname">First name</label>
+            <input type="text" id="firstname" (keyup)="nameFilt({type: 'firstName', value: nameInp})" [(ngModel)]="nameInp">
+        </div>
+        <div class="filter-bl three">
+            <label for="patronymic">Patronymic</label>
+            <input type="text" id="patronymic" (keyup)="nameFilt({type: 'patronymic', value: patrInp})" [(ngModel)]="patrInp">
         </div>
         <div class="filter-bl quat">
             <label for="chair">Chair</label>
@@ -20,9 +28,7 @@
         </div>
         <div class="filter-bl quat">
             <label for="group">Group</label>
-            <select id="group">
-                <option value="" selected>Group</option>
-            </select>
+            <input type="text" id="group" (keyup)="groupFilt(groupSel)" [(ngModel)]="groupSel">
         </div>
         <div class="filter-bl quat">
             <label for="degree">Degree</label>

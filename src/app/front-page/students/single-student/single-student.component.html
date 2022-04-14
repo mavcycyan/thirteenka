@@ -16,7 +16,7 @@
     </div>
     <div class="form-input">
         <label>Birthday</label>
-        <input type="text" name="birthday" class="datepicker" placeholder="Birthday" formControlName="birthday" (focus)="datePick(birth)" #birth>
+        <input type="date" name="birthday" placeholder="Birthday" formControlName="birthday" >
     </div>
     <div class="form-input">
         <label>Citizenship</label>
@@ -62,27 +62,50 @@
     </div>
     <div class="form-input">
         <label>Degree</label>
-        <input type="text" name="degree" placeholder="Degree" formControlName="degree">
+        <select id="degree" name="degree" formControlName="degree">
+            <option value="" selected>Degree</option>
+            <option value="Bachelor">Bachelor</option>
+            <option value="Specialist">Specialist</option>
+            <option value="Graduate student">Graduate student</option>
+        </select>
     </div>
     <div class="form-input">
         <label>Year Start</label>
-        <input type="text" name="yearStart" placeholder="Year Start" formControlName="yearStart">
+        <select id="yearStart" name="yearStart" formControlName="yearStart">
+            <option value="0"></option>
+            <option *ngFor="let year of edYears" [value]="year">{{year}}</option>
+        </select>
     </div>
     <div class="form-input">
         <label>Year End</label>
-        <input type="text" name="yearEnd" placeholder="Year End" formControlName="yearEnd">
+        <select id="yearEnd" name="yearEnd" formControlName="yearEnd">
+            <option value="0"></option>
+            <option *ngFor="let year of edYears" [value]="year">{{year}}</option>
+        </select>
     </div>
     <div class="form-input">
         <label>Status</label>
-        <input type="text" name="status" placeholder="Status" formControlName="status">
+        <select id="status" name="status" formControlName="status">
+            <option value="" selected>Status</option>
+            <option value="Studying">Studying</option>
+            <option value="Free">Free</option>
+        </select>
     </div>
     <div class="form-input">
         <label>Budget</label>
-        <input type="text" name="budget" placeholder="Budget" formControlName="budget">
+        <select name="budget" formControlName="budget">
+            <option value="" selected></option>
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
     </div>
     <div class="form-input">
         <label>Scholarship</label>
-        <input type="text" name="scholarship" placeholder="Scholarship" formControlName="scholarship">
+        <select name="scholarship" formControlName="scholarship">
+            <option value="" selected></option>
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
     </div>
     <div class="single_student-btns">
         <button type="submit" class="btn-large waves-effect waves-light green">{{addUpdTxt}}</button>

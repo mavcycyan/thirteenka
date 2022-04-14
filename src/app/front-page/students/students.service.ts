@@ -80,7 +80,6 @@ export class StudentsService {
           } ));
   }
     getSpecByChair(chairId: string): Observable<SpecData[]> {
-        console.log(chairId);
         return this.httpClient.get<SpecData[]>(`${environment.firebaseDB}specializations.json`,
             {
                 params: {

@@ -22,6 +22,10 @@
     max-width: 25%;
 }
 
+.filter-bl.three {
+    max-width: calc(100% / 3);
+}
+
 .filter-bl.educ label {
     width: 100%;
     display: block;

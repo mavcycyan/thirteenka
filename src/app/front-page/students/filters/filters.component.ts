@@ -27,6 +27,10 @@ export class FiltersComponent implements OnInit  {
   yearEndSel: string = '';
   budgSel: string = '';
   schSel: string = '';
+  groupSel: string = '';
+  nameInp: string = '';
+  surInp: string = '';
+  patrInp: string = '';
 
   constructor(private studentsService: StudentsService) {
       this.subject.pipe(
@@ -50,8 +54,14 @@ export class FiltersComponent implements OnInit  {
 
   }
 
-  nameFilt(value: string): void {
+  nameFilt(param: FilterParam = {type: '', value: ''}): void {
+      this.subject.next(param.value);
+      this.sendParam(param);
+  }
+
+  groupFilt(value: string): void {
       this.subject.next(value);
+      this.sendParam({type: 'group', value: value});
   }
 
   chairFilt(param: FilterParam = {type: '', value: ''}): void {
@@ -70,6 +80,8 @@ export class FiltersComponent implements OnInit  {
       this.yearEndSel = '';
       this.budgSel = '';
       this.schSel = '';
+      this.groupSel = '';
+      this.nameInp = '';
       this.sendParam({type: '', value: ''});
   }
 
