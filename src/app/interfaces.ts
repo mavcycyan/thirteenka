@@ -49,3 +49,8 @@ export interface FilterParam {
     type: string,
     value: string
 }
+
+export interface StatisticData {
+    year: number,
+    count: number
+}

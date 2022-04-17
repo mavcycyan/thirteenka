@@ -1,0 +1,11 @@
+.comp_welc-info-bl {
+    max-width: 50%;
+    width: 100%;
+    display: inline-block;
+}
+
+@media(max-width: 1300px) {
+    .comp_welc-info-bl {
+        max-width: 100%;
+    }
+}
